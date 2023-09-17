@@ -12,8 +12,8 @@ types = ['백화점', '교통시설', '시장', '대형마트', '전시시설', 
     '호텔', '도시공원', '자연공원', '복합관광시설', '레저스포츠시설', '기타관광', '종교성지', '공연시설',
     '육상레저스포츠', '기타문화관광지']
 
-color_list = ['beige', 'darkgreen', 'darkpurple', 'orange', 'blue', 
-              'lightblue', 'darkblue', 'darkred', 'lightred', 'green', 
-              'lightgray', 'white', 'pink', 'cadetblue', 'purple', 
-              'gray', 'red', 'black', 'lightgreen']
+color_list = ['orange', 'blue', 'green', 'beige', 'darkgreen', 'darkpurple', 
+              'lightblue', 'darkblue', 'darkred', 'lightred', 'lightgray', 
+              'white', 'pink', 'cadetblue', 'purple', 'gray', 'red', 'black', 'lightgreen']
+
 color_dict = dict({i:value for i, value in enumerate(color_list)})
