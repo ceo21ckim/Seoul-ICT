@@ -8,11 +8,11 @@ import folium
 from sklearn.cluster import KMeans
 from tqdm.auto import tqdm
 
-from settings import * 
+from settings import *
 
 def kakao_map(address):
     url = 'https://dapi.kakao.com/v2/local/search/address.json?query=' + address
-    api_key = '### Your API Key'
+    api_key = '### Input Your API Key'
     header = {'Authorization': 'KakaoAK ' + api_key}
     results = requests.get(url, headers=header).json()['documents']
     if results == []:
@@ -21,8 +21,13 @@ def kakao_map(address):
         results = results[0]['address']
         return float(results['x']), float(results['y'])
     
-    
 def getLongLat(addr):
+    '''
+    Input:
+        addr: address
+    Return:
+        Long, Lat: Longitude and Latitude of address
+    '''
     Long, Lat = [], []
     for i in tqdm(range(len(addr)), total=len(addr)):
         location = kakao_map(addr[i])
@@ -37,11 +42,22 @@ def getLongLat(addr):
 
 
 def LabelEncoder(value, types=types):
-    type_dict = dict({t:i for i, t in enumerate(types)})
-    return type_dict[value]
+    '''
+    Input: 
+        value: indicates string such as department store, shopping mall and tour spot.
+    Return:
+        num2label[value]: indicates numeric variable.
+    '''
+    label2num = dict({t:i for i, t in enumerate(types)})
+    return label2num[value]
 
+def LabelDecoder(value, types=types):
+    # similar to LabelEncoder. Different from LabelEncdoer, it returns a label, not numeric a variable.
+    num2label = dict({i:t for i, t in enumerate(types)})
+    return num2label[value]
+    
 
-def plot_map(dataframe, save=True, fname='daegu.html'):
+def plot_map(dataframe, save=False, fname='daegu.html'):
     c_long, c_lat = dataframe.loc[:, 'long'].mean(), dataframe.loc[:, 'lat'].mean()
     
     m = folium.Map(location=[c_lat, c_long],
@@ -59,7 +75,8 @@ def plot_map(dataframe, save=True, fname='daegu.html'):
         m.save(os.path.join(IMG_DIR, fname))
     return m 
 
-def plot_cluster(dataframe, n_cluster=3, save=True, fname='daegu_cluster.html'):
+
+def plot_cluster(dataframe, n_cluster=3, save=False, fname='daegu_cluster.html'):
     c_long, c_lat = dataframe.loc[:, 'long'].mean(), dataframe.loc[:, 'lat'].mean()
     m = folium.Map(location=[c_lat, c_long],
                    zoom_start=15)
@@ -92,7 +109,32 @@ def plot_cluster(dataframe, n_cluster=3, save=True, fname='daegu_cluster.html'):
     return m 
 
 
+def plot_map_all(save=False, extension='html'):
+    files = glob.glob(os.path.join(DATA_DIR, '*'))
+    
+    for file in files:
+        fname = os.path.basename(file).split('.')[0]
+        dataframe = get_dataframe(file)
+        
+        plot_map(dataframe, save=save, fname='.'.join([fname, extension]))
+        plot_cluster(dataframe, save=save, fname='.'.join([fname +'_cluster', extension]))
+
+
+def get_unique_type():
+    types = []
+    for fname in glob.glob(os.path.join(DATA_DIR, '*')):
+        u_type = pd.read_csv(fname, encoding='cp949').loc[:, '분류'].unique().tolist()
+        types.append(u_type)
+    return list(set(types))
+
+
 def get_dataframe(path):
+    '''
+    Input:
+        path: indicates file path.
+    Return:
+        tour: Return a data frame, which is preprocessed for efficient programming.
+    '''
     tour = pd.read_csv(path, encoding='cp949')
 
     tour.rename({'분류':'category', 
