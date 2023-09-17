@@ -8,7 +8,7 @@ from settings import *
 
 def kakao_map(address):
     url = 'https://dapi.kakao.com/v2/local/search/address.json?query=' + address
-    api_key = '0763f0b11a74de2c93c8cca992482a38'
+    api_key = '###Input Your API Key'
     header = {'Authorization': 'KakaoAK ' + api_key}
     results = requests.get(url, headers=header).json()['documents']
     if results == []:
