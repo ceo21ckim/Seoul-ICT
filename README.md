@@ -1,5 +1,16 @@
 # Seoul-ICT
 
+## Requirements
+
+```
+tqdm
+torch
+transformers
+pandas
+numpy
+folium
+```
+
 ## Example
 
 ```
