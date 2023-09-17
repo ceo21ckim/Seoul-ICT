@@ -9,6 +9,8 @@ transformers
 pandas
 numpy
 folium
+accelerate
+sentencepiece
 ```
 
 ## Example
