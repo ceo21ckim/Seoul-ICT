@@ -119,15 +119,6 @@ def plot_map_all(save=False, extension='html'):
         plot_map(dataframe, save=save, fname='.'.join([fname, extension]))
         plot_cluster(dataframe, save=save, fname='.'.join([fname +'_cluster', extension]))
 
-
-def get_unique_type():
-    types = []
-    for fname in glob.glob(os.path.join(DATA_DIR, '*')):
-        u_type = pd.read_csv(fname, encoding='cp949').loc[:, '분류'].unique().tolist()
-        types.append(u_type)
-    return list(set(types))
-
-
 def get_dataframe(path):
     '''
     Input:
