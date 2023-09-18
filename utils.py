@@ -5,6 +5,7 @@ import pandas as pd
 import requests 
 import folium
 
+from branca.element import Figure
 from sklearn.cluster import KMeans
 from tqdm.auto import tqdm
 
@@ -12,7 +13,7 @@ from settings import *
 
 def kakao_map(address):
     url = 'https://dapi.kakao.com/v2/local/search/address.json?query=' + address
-    api_key = '### Input Your API Key'
+    api_key = '0763f0b11a74de2c93c8cca992482a38'
     header = {'Authorization': 'KakaoAK ' + api_key}
     results = requests.get(url, headers=header).json()['documents']
     if results == []:
@@ -119,6 +120,7 @@ def plot_map_all(save=False, extension='html'):
         plot_map(dataframe, save=save, fname='.'.join([fname, extension]))
         plot_cluster(dataframe, save=save, fname='.'.join([fname +'_cluster', extension]))
 
+
 def get_dataframe(path):
     '''
     Input:
@@ -140,5 +142,45 @@ def get_dataframe(path):
     return tour
 
 
-def get_distance(v):
-    NotImplementedError
+def get_route(src, dst):
+    answer = []
+    while dst:
+        _min = float('inf')
+        for i, v in enumerate(dst):
+            dist = distance(src, v)
+            if _min > dist:
+                _min = dist 
+                idx = i
+        src = dst.pop(idx)
+        answer.append(src)
+    return answer
+
+
+def plot_route(src, others, save=False, fname='route', extension='html'):
+    fig = Figure(width=550,height=350)
+    route = get_route(src, others)
+    center = np.mean(route, axis=0).tolist()
+    m = folium.Map(location=center, 
+                zoom_start=10)
+    fig.add_child(m)
+    folium.PolyLine(locations = route,
+                ).add_to(m)
+    
+    for lat, lon in route:
+        folium.Marker(
+            location=[lat,lon], 
+            icon=folium.Icon('lightblue', icon='bookmark'), 
+            
+        ).add_to(m)
+    
+    if save:
+        m.save(os.path.join(IMG_DIR, '.'.join([fname, extension])))
+    return m 
+
+
+def distance(src, dst, types='l2'):
+    if types == 'l2':
+        return np.sqrt(np.power(src[0]-dst[0], 2) + np.power(src[1]-dst[1], 2))
+    
+    elif types == 'l1':
+        return np.abs(src[0]-dst[0]) + np.abs(src[1]-dst[1])
