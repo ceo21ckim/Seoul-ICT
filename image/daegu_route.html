@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_0bb8e3b9f858f9b4d83cb8b8dc0578a0 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_0bb8e3b9f858f9b4d83cb8b8dc0578a0" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_0bb8e3b9f858f9b4d83cb8b8dc0578a0 = L.map(
+                "map_0bb8e3b9f858f9b4d83cb8b8dc0578a0",
+                {
+                    center: [35.83853673026259, 128.5901383747241],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c94279ea87bd7652a41fa56a06286a64 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var poly_line_ed0bedfdbc7fb780299ab254a33c5848 = L.polyline(
+                [[35.8581745018633, 128.630635463648], [35.8455745296153, 128.638341947998], [35.827028624816, 128.674340825269], [35.7880124158823, 128.636118269022], [35.8687083802364, 128.598741541322], [35.8548554163402, 128.564820995296], [35.9070695926156, 128.613073860533], [35.908047257445, 128.614593827076], [35.8412414474774, 128.464955331165], [35.6866551363345, 128.465761685912]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var marker_e0ece144e1ae2de4ef5807197234bafc = L.marker(
+                [35.8581745018633, 128.630635463648],
+                {}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var icon_acc3892d391035e93767bf7f4da01b84 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bookmark", "iconColor": "white", "markerColor": "lightred", "prefix": "glyphicon"}
+            );
+            marker_e0ece144e1ae2de4ef5807197234bafc.setIcon(icon_acc3892d391035e93767bf7f4da01b84);
+        
+    
+        var popup_b972d5361bba9a3681f7440b826c7ec3 = L.popup({"maxWidth": 60, "minWidth": 60});
+
+        
+            
+                var html_bad9db8484a56c87394d495af57e244e = $(`<div id="html_bad9db8484a56c87394d495af57e244e" style="width: 100.0%; height: 100.0%;"><b>대구그랜드호텔</b></div>`)[0];
+                popup_b972d5361bba9a3681f7440b826c7ec3.setContent(html_bad9db8484a56c87394d495af57e244e);
+            
+        
+
+        marker_e0ece144e1ae2de4ef5807197234bafc.bindPopup(popup_b972d5361bba9a3681f7440b826c7ec3)
+        ;
+
+        
+    
+    
+            var marker_36ff6c296048edd131fe9d751ef9c5b6 = L.marker(
+                [35.8455745296153, 128.638341947998],
+                {}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var icon_81b84c215c553c44ee5cd9b6439714a1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bookmark", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_36ff6c296048edd131fe9d751ef9c5b6.setIcon(icon_81b84c215c553c44ee5cd9b6439714a1);
+        
+    
+        var popup_ae3e694f55407b9701eb3e4df832e721 = L.popup({"maxWidth": 60, "minWidth": 60});
+
+        
+            
+                var html_ad0db94e435c5b7c063e20fb393855ee = $(`<div id="html_ad0db94e435c5b7c063e20fb393855ee" style="width: 100.0%; height: 100.0%;"><b>EXCO서관</b></div>`)[0];
+                popup_ae3e694f55407b9701eb3e4df832e721.setContent(html_ad0db94e435c5b7c063e20fb393855ee);
+            
+        
+
+        marker_36ff6c296048edd131fe9d751ef9c5b6.bindPopup(popup_ae3e694f55407b9701eb3e4df832e721)
+        ;
+
+        
+    
+    
+            var marker_1f9ce4fced12d8dba16f99ab4a667fcc = L.marker(
+                [35.827028624816, 128.674340825269],
+                {}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var icon_07c58c3108906f94f67d4a260ad21a61 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bookmark", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_1f9ce4fced12d8dba16f99ab4a667fcc.setIcon(icon_07c58c3108906f94f67d4a260ad21a61);
+        
+    
+        var popup_1869a21b558c7905cad24d7121fad108 = L.popup({"maxWidth": 60, "minWidth": 60});
+
+        
+            
+                var html_ff4340d89edc9901d6417b70ec561b6a = $(`<div id="html_ff4340d89edc9901d6417b70ec561b6a" style="width: 100.0%; height: 100.0%;"><b>수성못</b></div>`)[0];
+                popup_1869a21b558c7905cad24d7121fad108.setContent(html_ff4340d89edc9901d6417b70ec561b6a);
+            
+        
+
+        marker_1f9ce4fced12d8dba16f99ab4a667fcc.bindPopup(popup_1869a21b558c7905cad24d7121fad108)
+        ;
+
+        
+    
+    
+            var marker_99b8b00ff3e3e3e41dc02370f59d4ae8 = L.marker(
+                [35.7880124158823, 128.636118269022],
+                {}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var icon_672fb36f093a178231a930eab02a74b6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bookmark", "iconColor": "white", "markerColor": "beige", "prefix": "glyphicon"}
+            );
+            marker_99b8b00ff3e3e3e41dc02370f59d4ae8.setIcon(icon_672fb36f093a178231a930eab02a74b6);
+        
+    
+        var popup_5c7ce8959a184e442d03f58bb1b30837 = L.popup({"maxWidth": 60, "minWidth": 60});
+
+        
+            
+                var html_b660764a77c259a859b9a3da676e0ac3 = $(`<div id="html_b660764a77c259a859b9a3da676e0ac3" style="width: 100.0%; height: 100.0%;"><b>이월드</b></div>`)[0];
+                popup_5c7ce8959a184e442d03f58bb1b30837.setContent(html_b660764a77c259a859b9a3da676e0ac3);
+            
+        
+
+        marker_99b8b00ff3e3e3e41dc02370f59d4ae8.bindPopup(popup_5c7ce8959a184e442d03f58bb1b30837)
+        ;
+
+        
+    
+    
+            var marker_2f1972f51391357e57ae05ff6cb04173 = L.marker(
+                [35.8687083802364, 128.598741541322],
+                {}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var icon_7c20695d819cd5d4b8a59567b0c041b5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bookmark", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_2f1972f51391357e57ae05ff6cb04173.setIcon(icon_7c20695d819cd5d4b8a59567b0c041b5);
+        
+    
+        var popup_aacb0c6f87db734c6a6ef54ae2308823 = L.popup({"maxWidth": 60, "minWidth": 60});
+
+        
+            
+                var html_2ad1b3b31e531ce49857a7fff23510aa = $(`<div id="html_2ad1b3b31e531ce49857a7fff23510aa" style="width: 100.0%; height: 100.0%;"><b>대구미술관</b></div>`)[0];
+                popup_aacb0c6f87db734c6a6ef54ae2308823.setContent(html_2ad1b3b31e531ce49857a7fff23510aa);
+            
+        
+
+        marker_2f1972f51391357e57ae05ff6cb04173.bindPopup(popup_aacb0c6f87db734c6a6ef54ae2308823)
+        ;
+
+        
+    
+    
+            var marker_5aa2c6e0c6e758fba508051342aff1e8 = L.marker(
+                [35.8548554163402, 128.564820995296],
+                {}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var icon_47d56987cc6ad53f0454a1bbff2aef3d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bookmark", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_5aa2c6e0c6e758fba508051342aff1e8.setIcon(icon_47d56987cc6ad53f0454a1bbff2aef3d);
+        
+    
+        var popup_5060ab580110717327482ea8e2c9b8f5 = L.popup({"maxWidth": 60, "minWidth": 60});
+
+        
+            
+                var html_3149b62f474d184c8e57825a5f824137 = $(`<div id="html_3149b62f474d184c8e57825a5f824137" style="width: 100.0%; height: 100.0%;"><b>EXCO동관</b></div>`)[0];
+                popup_5060ab580110717327482ea8e2c9b8f5.setContent(html_3149b62f474d184c8e57825a5f824137);
+            
+        
+
+        marker_5aa2c6e0c6e758fba508051342aff1e8.bindPopup(popup_5060ab580110717327482ea8e2c9b8f5)
+        ;
+
+        
+    
+    
+            var marker_4068517303d3afb70ef74c2241a69060 = L.marker(
+                [35.9070695926156, 128.613073860533],
+                {}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var icon_c753333acd4e42cb17ff329d0e0a0ed5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bookmark", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_4068517303d3afb70ef74c2241a69060.setIcon(icon_c753333acd4e42cb17ff329d0e0a0ed5);
+        
+    
+        var popup_a4f738a5878d9d7a9fdc726adc0e78fd = L.popup({"maxWidth": 60, "minWidth": 60});
+
+        
+            
+                var html_70da661eea1709dbbc6f28767c5fa33d = $(`<div id="html_70da661eea1709dbbc6f28767c5fa33d" style="width: 100.0%; height: 100.0%;"><b>국립대구과학관</b></div>`)[0];
+                popup_a4f738a5878d9d7a9fdc726adc0e78fd.setContent(html_70da661eea1709dbbc6f28767c5fa33d);
+            
+        
+
+        marker_4068517303d3afb70ef74c2241a69060.bindPopup(popup_a4f738a5878d9d7a9fdc726adc0e78fd)
+        ;
+
+        
+    
+    
+            var marker_5c522b2d7f649260e7e63549787010b1 = L.marker(
+                [35.908047257445, 128.614593827076],
+                {}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var icon_1fe7f21013caff9dab700eec530f5d3a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bookmark", "iconColor": "white", "markerColor": "beige", "prefix": "glyphicon"}
+            );
+            marker_5c522b2d7f649260e7e63549787010b1.setIcon(icon_1fe7f21013caff9dab700eec530f5d3a);
+        
+    
+        var popup_8bb9e5a016694c215fd460336e333920 = L.popup({"maxWidth": 60, "minWidth": 60});
+
+        
+            
+                var html_2f86e66930fa4ad6decc6a0517f11dac = $(`<div id="html_2f86e66930fa4ad6decc6a0517f11dac" style="width: 100.0%; height: 100.0%;"><b>스파크랜드</b></div>`)[0];
+                popup_8bb9e5a016694c215fd460336e333920.setContent(html_2f86e66930fa4ad6decc6a0517f11dac);
+            
+        
+
+        marker_5c522b2d7f649260e7e63549787010b1.bindPopup(popup_8bb9e5a016694c215fd460336e333920)
+        ;
+
+        
+    
+    
+            var marker_4053d20fd74cc957c14dd0a7c354d932 = L.marker(
+                [35.8412414474774, 128.464955331165],
+                {}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var icon_b05793848e8a98c88646b056749383b1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bookmark", "iconColor": "white", "markerColor": "beige", "prefix": "glyphicon"}
+            );
+            marker_4053d20fd74cc957c14dd0a7c354d932.setIcon(icon_b05793848e8a98c88646b056749383b1);
+        
+    
+        var popup_97ac071f3e7bda7d7be8dbd85570212d = L.popup({"maxWidth": 60, "minWidth": 60});
+
+        
+            
+                var html_5db8a56f1000887173c4a50dadf9ec86 = $(`<div id="html_5db8a56f1000887173c4a50dadf9ec86" style="width: 100.0%; height: 100.0%;"><b>리조트스파밸리네이처파크</b></div>`)[0];
+                popup_97ac071f3e7bda7d7be8dbd85570212d.setContent(html_5db8a56f1000887173c4a50dadf9ec86);
+            
+        
+
+        marker_4053d20fd74cc957c14dd0a7c354d932.bindPopup(popup_97ac071f3e7bda7d7be8dbd85570212d)
+        ;
+
+        
+    
+    
+            var marker_271755ce60c73ba2e2f6d6004acc1358 = L.marker(
+                [35.6866551363345, 128.465761685912],
+                {}
+            ).addTo(map_0bb8e3b9f858f9b4d83cb8b8dc0578a0);
+        
+    
+            var icon_2d33a7e9119b78421aede1b05f1ff02d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bookmark", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_271755ce60c73ba2e2f6d6004acc1358.setIcon(icon_2d33a7e9119b78421aede1b05f1ff02d);
+        
+    
+        var popup_e1e7985f661060f0b7e410ada15c736a = L.popup({"maxWidth": 60, "minWidth": 60});
+
+        
+            
+                var html_beae8a2a346cd6a6afd9fa1682cf788b = $(`<div id="html_beae8a2a346cd6a6afd9fa1682cf788b" style="width: 100.0%; height: 100.0%;"><b>국립대구박물관</b></div>`)[0];
+                popup_e1e7985f661060f0b7e410ada15c736a.setContent(html_beae8a2a346cd6a6afd9fa1682cf788b);
+            
+        
+
+        marker_271755ce60c73ba2e2f6d6004acc1358.bindPopup(popup_e1e7985f661060f0b7e410ada15c736a)
+        ;
+
+        
+    
+</script>
+</html>
