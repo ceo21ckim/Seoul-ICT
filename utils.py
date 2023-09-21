@@ -47,7 +47,7 @@ def getLongLat(addr):
     return Long, Lat
 
 
-def LabelEncoder(value, types=types):
+def LabelEncoder(value, types=TYPE):
     '''
     Input: 
         value: indicates string such as department store, shopping mall and tour spot.
@@ -57,7 +57,7 @@ def LabelEncoder(value, types=types):
     label2num = dict({t:i for i, t in enumerate(types)})
     return label2num[value]
 
-def LabelDecoder(value, types=types):
+def LabelDecoder(value, types=TYPE):
     # similar to LabelEncoder. Different from LabelEncdoer, it returns a label, not numeric a variable.
     num2label = dict({i:t for i, t in enumerate(types)})
     return num2label[value]
@@ -161,9 +161,14 @@ def get_route(src, dst):
     return answer
 
 
-def plot_route(src, others, save=False, fname='route', extension='html'):
+def plot_route(src, dst, save=False, marker=True, fname='route', extension='html'):
     fig = Figure(width=550,height=350)
-    route = get_route(src, others)
+    color_map = pd.concat([src, dst], axis=0).category.apply(LabelEncoder).values
+    
+    src_location = src.loc[:, ['lat', 'long']].values.tolist()[0]
+    dst_location = dst.loc[:, ['lat', 'long']].values.tolist()
+    name = np.concatenate([src.name.values, dst.name.values])
+    route = get_route(src_location, dst_location)
     center = np.mean(route, axis=0).tolist()
     m = folium.Map(location=center, 
                 zoom_start=10)
@@ -171,17 +176,20 @@ def plot_route(src, others, save=False, fname='route', extension='html'):
     folium.PolyLine(locations = route,
                 ).add_to(m)
     
-    for lat, lon in route:
-        folium.Marker(
-            location=[lat,lon], 
-            icon=folium.Icon('lightblue', icon='bookmark'), 
-            
-        ).add_to(m)
-    
+    if marker:
+        for i, ((lat, lon), color) in enumerate(zip(route, color_map)):
+            popup = folium.Popup(f'<b>{name[i]}</b>', min_width=60, max_width=60)
+            folium.Marker(
+                location=[lat,lon], 
+                popup=popup,
+                icon=folium.Icon(f'{color_dict[color]}', icon='bookmark'), 
+                
+            ).add_to(m)
+        
     if save:
         m.save(os.path.join(IMG_DIR, '.'.join([fname, extension])))
+        
     return m 
-
 
 def distance(src, dst, types='l2'):
     if types == 'l2':

@@ -17,7 +17,7 @@ def get_unique_type():
     return list(set(types))
 
     
-types = get_unique_type()
+TYPE = get_unique_type()
 
 color_list = ['orange', 'blue', 'green', 'beige', 'darkgreen', 'darkpurple', 
               'lightblue', 'darkblue', 'darkred', 'lightred', 'lightgray', 
