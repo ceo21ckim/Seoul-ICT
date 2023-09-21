@@ -3,11 +3,16 @@
 import numpy as np
 import pandas as pd  
 import requests 
+import torch 
 import folium
 
 from branca.element import Figure
 from sklearn.cluster import KMeans
+from sklearn.metrics.pairwise import cosine_similarity
 from tqdm.auto import tqdm
+
+from kobert_tokenizer import KoBERTTokenizer
+from transformers import BertModel 
 
 from settings import *
 
@@ -184,3 +189,29 @@ def distance(src, dst, types='l2'):
     
     elif types == 'l1':
         return np.abs(src[0]-dst[0]) + np.abs(src[1]-dst[1])
+
+
+def word_embed(src, model, tokenizer, max_length=20):
+    src = tokenizer.batch_encode_plus([src], max_length=max_length, padding='max_length')
+    src = model(input_ids=torch.tensor(src['input_ids']), attention_mask=torch.tensor(src['attention_mask'])).pooler_output
+    return src.detach().numpy()
+
+
+def get_similar_spot(src,k=10):
+    files = glob.glob(DATA_DIR + '/*')
+    outs = []
+    src = word_embed(src)
+    for file in files:
+        spots = get_dataframe(file).name.values
+        for spot in spots:
+            vector = word_embed(spot)
+            score = cosine_similarity(src, vector).item()
+            outs.append([spot, score])
+    outs = sorted(outs, key=lambda x: x[1], reverse=True)
+    return outs
+
+if __name__ == '__main__':
+    model = BertModel.from_pretrained('skt/kobert-base-v1')
+    tokenizer = KoBERTTokenizer.from_pretrained(
+        'skt/kobert-base-v1', 
+        sp_model_kwargs={'nbest_size': -1, 'alpha': 0.6, 'enable_sampling': True})
